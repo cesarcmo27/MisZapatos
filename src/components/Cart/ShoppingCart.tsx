@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CartContainer, CartContent, CartFooter, CartHeader, CheckoutButton, EmptyMessage, ProductInfo, ProductItem, ProductName, ProductPrice, RemoveButton, TotalAmount } from "./ShoppingCartStyle";
 
 interface ShoppingCartProps {
@@ -6,7 +6,9 @@ interface ShoppingCartProps {
     onClose: () => void;
 }
 
-export const ShoppingCart: React.FC<ShoppingCartProps> = ({ isOpen,onClose }) => {
+export const ShoppingCart: React.FC<ShoppingCartProps> = ({ isOpen, onClose }) => {
+
+    const cartRef = useRef<HTMLDivElement | null>(null);
 
     const [products, setProducts] = useState([
         { name: "Zapato A", price: 50 },
@@ -20,19 +22,23 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({ isOpen,onClose }) =>
 
     useEffect(() => {
         if (isOpen) {
-            const handleOutsideClick = (event: MouseEvent) => {
-                if (event.target instanceof Element && !document.getElementById("cart-container")?.contains(event.target)) {
-                    onClose(); // Cierra el carrito si se hace clic fuera
+            const handleOutsideClick = (event: PointerEvent) => {
+                // Verificamos si el clic fue fuera del carrito
+                if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+                    onClose(); // Cierra el carrito si el clic fue fuera
                 }
             };
+            document.addEventListener("pointerdown", handleOutsideClick);
 
-            document.addEventListener("mousedown", handleOutsideClick);
-            return () => document.removeEventListener("mousedown", handleOutsideClick);
+            // Limpieza del listener cuando el carrito se cierra
+            return () => document.removeEventListener("pointerdown", handleOutsideClick);
         }
-    }, [isOpen, onClose])
+    }, [isOpen, onClose]);
+
 
     return (
         <CartContainer
+            ref={cartRef}
             initial={{ x: "100%" }}
             animate={{ x: isOpen ? "0%" : "100%" }}
             transition={{ type: "spring", stiffness: 300 }}
