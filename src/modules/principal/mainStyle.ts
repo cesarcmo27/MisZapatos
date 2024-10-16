@@ -37,3 +37,36 @@ export const Button = styled(motion.button)`
     transform: scale(1.05);
   }
 `;
+
+export const CollectionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  //margin-top: 50px; // Add margin to separate from your hero content
+  height: 60vh;
+  width: 100%;
+  overflow: hidden;
+`;
+
+export const ImageCard = styled(motion.div)`
+  width: 508%; // Slightly less than 50% to add a small gap between the cards
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    filter: sepia(1.2);
+  }
+`;
+
+export const OverlayText = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+`;
