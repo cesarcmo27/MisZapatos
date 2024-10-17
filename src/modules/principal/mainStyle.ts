@@ -7,7 +7,7 @@ export const HeroContainer = styled.section`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('/images/fondo1~mv2.jpg'); /* Reemplaza con la imagen que estás usando */
+  background-image: url('${process.env.PUBLIC_URL}/images/fondo1~mv2.jpg'); /* Reemplaza con la imagen que estás usando */
   background-size: cover;
   background-position: center;
 `;

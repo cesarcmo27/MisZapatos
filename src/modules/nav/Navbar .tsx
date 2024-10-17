@@ -22,7 +22,7 @@ export const Navbar = () => {
     <>
       <NavbarContainer>
         <Logo>
-          <img src="/images/chabelogo.png" alt="Chabelas Logo" />
+          <img src={`${process.env.PUBLIC_URL}/images/chabelogo.png`} alt="Chabelas Logo" />
           Calzados Ysi
         </Logo>
         <NavLinks>
@@ -39,8 +39,8 @@ export const Navbar = () => {
       {showLogin && <LoginForm />} {/* Render the login form if showLogin is true */}
       <ShoppingCart
         isOpen={showCart}
-       onClose={handleCartClick}
-      
+        onClose={handleCartClick}
+
       />
     </>
   );

@@ -19,7 +19,7 @@ export const MainComponent = () => {
         <ImageCard
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          style={{ backgroundImage: `url('/images/calzadoHombre.jpg')` }}
+          style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/images/calzadoHombre.jpg')` }}
           onClick={() => navigate('/productos?categoria=hombre')}
         >
           <OverlayText>COLECCIÓN PARA HOMBRE</OverlayText>
@@ -29,7 +29,7 @@ export const MainComponent = () => {
         <ImageCard
           whileHover={{ scale: 1.05 }}path-to-your-image
           whileTap={{ scale: 0.95 }}
-          style={{ backgroundImage: `url('/images/calzadoMujer.jpg')` }}
+          style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/images/calzadoMujer.jpg')` }}
           onClick={() => navigate('/productos?categoria=mujer')}
         >
           <OverlayText>COLECCIÓN PARA MUJER</OverlayText>
