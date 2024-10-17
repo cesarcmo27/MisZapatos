@@ -13,10 +13,15 @@ export const ProductsContainer = styled.div`
 export const ProductList = styled.div`
   flex: 3;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Dos productos por fila */
   gap: 20px;
-  /* Optionally, add padding to the ProductList if needed */
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* Dos productos por fila en pantallas pequeñas también */
+  }
 `;
+
+
 
 export const ProductCard = styled(motion.div)`
   background-color: white;
@@ -24,11 +29,15 @@ export const ProductCard = styled(motion.div)`
   position: relative;
   padding: 10px;
   transition: all 0.3s ease;
-  height: 200px;
+  min-height: 250px; /* Ajusta la altura mínima para evitar solapamiento */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &:hover {
     transform: translateY(-10px); /* Mueve el producto hacia arriba al hacer hover */
   }
 `;
+
 
 export const ProductImage = styled.img`
   width: 100%;

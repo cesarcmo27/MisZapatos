@@ -14,13 +14,15 @@ export const ProductsList: React.FC = () => {
     useEffect(() => {
         if (categoria === 'hombre') {
             setProductos([
-                { id: 1, title: 'Producto Hombre 1', price: 150, img: '/path-to-image/calzadoHombre1.jpg' },
-                { id: 2, title: 'Producto Hombre 2', price: 200, img: '/path-to-image/calzadoHombre2.jpg' }
+                { id: 1, title: 'Producto Hombre 1', price: 150, img: '/zapatos/zapatillaForte.png' },
+                { id: 2, title: 'Producto Hombre 2', price: 200, img: '/zapatos/zapatovestir.png' },
+                { id: 3, title: 'Producto Hombre 3', price: 200, img: '/zapatos/zapatovestir.png' },
+                { id: 4, title: 'Producto Hombre 4', price: 150, img: '/zapatos/zapatillaForte.png' },
             ]);
         } else if (categoria === 'mujer') {
             setProductos([
-                { id: 1, title: 'Producto Mujer 1', price: 150, img: '/path-to-image/calzadoMujer1.jpg' },
-                { id: 2, title: 'Producto Mujer 2', price: 200, img: '/path-to-image/calzadoMujer2.jpg' }
+                { id: 1, title: 'Producto Mujer 1', price: 150, img: '/zapatos/zapatillaForte.png' },
+                { id: 2, title: 'Producto Mujer 2', price: 200, img: '/zapatos/zapatovestir.png' }
             ]);
         }
     }, [categoria]);

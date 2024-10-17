@@ -9,7 +9,7 @@ import {ProductsList} from './modules/products/productsList';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/MisZapatos">
       <Navbar />
       <Routes>
         <Route path="/" element={<MainComponent />} />
