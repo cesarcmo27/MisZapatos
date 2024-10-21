@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { FiltersContainer, FilterSection, FilterTitle, FilterContent, PriceSlider, ColorOptions, ColorCircle, Checkbox } from './filterStyle'; // Import your styled components
+import { FiltersContainer, FilterSection, FilterTitle, FilterContent, PriceSlider, ColorOptions, ColorCircle, Checkbox } from './filterStyle';
 
 const Filters = () => {
     const [showPrice, setShowPrice] = useState(false);
     const [showColor, setShowColor] = useState(false);
     const [showSize, setShowSize] = useState(false);
-    const [priceRange, setPriceRange] = useState([96, 220]); // Example price range
+    const [priceRange, setPriceRange] = useState([96, 220]); // Rango de precio de ejemplo
     const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
     const togglePrice = () => setShowPrice(!showPrice);
@@ -14,6 +14,16 @@ const Filters = () => {
 
     const handleSizeChange = (size: string) => {
         setSelectedSizes(prev => prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]);
+    };
+
+    const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newMinPrice = Math.min(+e.target.value, priceRange[1]);
+        setPriceRange([newMinPrice, priceRange[1]]);
+    };
+
+    const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newMaxPrice = Math.max(+e.target.value, priceRange[0]);
+        setPriceRange([priceRange[0], newMaxPrice]);
     };
 
     return (
@@ -26,8 +36,14 @@ const Filters = () => {
                         min="96"
                         max="220"
                         value={priceRange[0]}
-                        onChange={(e) => setPriceRange([+e.target.value[0], +e.target.value[1]])}
-                        step="1"
+                        onChange={handleMinPriceChange}
+                    />
+                    <PriceSlider
+                        type="range"
+                        min="96"
+                        max="220"
+                        value={priceRange[1]}
+                        onChange={handleMaxPriceChange}
                     />
                     <p>{`€${priceRange[0]},00 - €${priceRange[1]},00`}</p>
                 </FilterContent>

@@ -1,47 +1,49 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
-import { Icons, Logo, NavLinks, NavbarContainer } from "./NavBarStyle";
+import { FaUser, FaShoppingCart, FaBars } from 'react-icons/fa';
+import { NavbarContainer, Logo, NavLinks, Icons, HamburgerIcon } from './NavBarStyle';
 import LoginForm from '../login/loginForm';
 import { ShoppingCart } from '../../components/Cart/ShoppingCart';
-
 
 export const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // Estado para el menú móvil
 
   const handleLoginClick = () => {
-    setShowLogin(!showLogin); // Toggle login form
-  }
+    setShowLogin(!showLogin);
+  };
 
   const handleCartClick = () => {
     setShowCart(!showCart);
-  }
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen); // Alternar el estado del menú móvil
+  };
 
   return (
     <>
       <NavbarContainer>
         <Logo>
           <img src={`${process.env.PUBLIC_URL}/images/chabelogo.png`} alt="Chabelas Logo" />
-          Calzados Ysi
+          Ysi
         </Logo>
-        <NavLinks>
-          <Link to="/">Inicio</Link>
-          <Link to="/tienda">Tienda</Link>
-          <Link to="/sobre-cd">Sobre CD</Link>
-          <Link to="/servicio-cliente">Servicio al Cliente</Link>
+        <NavLinks isOpen={menuOpen}>
+          <Link to="/" onClick={toggleMenu}>Inicio</Link>
+          <Link to="/tienda" onClick={toggleMenu}>Tienda</Link>
+          <Link to="/servicio-cliente" onClick={toggleMenu}>Contacto</Link>
         </NavLinks>
         <Icons>
-          <FaUser size={20} onClick={handleLoginClick} style={{ cursor: 'pointer' }} />
-          <FaShoppingCart size={20} onClick={handleCartClick} style={{ cursor: 'pointer' }} />
+          <FaUser size={20} onClick={handleLoginClick} />
+          <FaShoppingCart size={20} onClick={handleCartClick} />
+          <HamburgerIcon onClick={toggleMenu}>
+            <FaBars size={25} />
+          </HamburgerIcon>
         </Icons>
       </NavbarContainer>
-      {showLogin && <LoginForm />} {/* Render the login form if showLogin is true */}
-      <ShoppingCart
-        isOpen={showCart}
-        onClose={handleCartClick}
-
-      />
+      {showLogin && <LoginForm />} {/* Renderiza el formulario de login si está activado */}
+      <ShoppingCart isOpen={showCart} onClose={handleCartClick} />
     </>
   );
 };
