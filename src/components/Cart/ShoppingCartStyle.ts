@@ -13,6 +13,10 @@ box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.3);
 z-index: 1000;
 display: flex;
 flex-direction: column;
+
+@media (max-width: 768px) {
+    width: 100%; /* El carrito ocupará todo el ancho en pantallas pequeñas */
+  }
 `;
 
 // Encabezado del carrito con degradado rojo
@@ -26,6 +30,13 @@ export const CartHeader = styled.div`
     margin: 0;
     font-size: 1.5rem;
   }
+
+   @media (max-width: 768px) {
+    padding: 15px;
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 // Contenedor de productos seleccionados
@@ -34,6 +45,10 @@ export const CartContent = styled.div`
   padding: 20px;
   background-color: #fff;
   overflow-y: auto;
+  
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 // Producto individual
@@ -42,6 +57,10 @@ export const ProductItem = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+
+   @media (max-width: 768px) {
+    margin-bottom: 8px;
+  }
 `;
 
 // Información del producto
@@ -72,6 +91,11 @@ export const RemoveButton = styled.button`
   &:hover {
     background-color: darkred;
   }
+
+  @media (max-width: 768px) {
+    padding: 5px;
+    font-size: 0.9rem;
+  }
 `;
 
 // Footer del carrito con el total
@@ -82,6 +106,10 @@ export const CartFooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
 `;
 
 // Total a pagar
@@ -89,6 +117,11 @@ export const TotalAmount = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
 `;
 
 // Botón de checkout
@@ -104,6 +137,11 @@ export const CheckoutButton = styled.button`
 
   &:hover {
     background-color: darkred;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    font-size: 0.9rem;
   }
 `;
 
