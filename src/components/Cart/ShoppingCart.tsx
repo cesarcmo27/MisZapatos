@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { CartContainer, CartContent, CartFooter, CartHeader, CheckoutButton, EmptyMessage, ProductInfo, ProductItem, ProductName, ProductPrice, RemoveButton, TotalAmount } from "./ShoppingCartStyle";
+import { CartContainer, CartContent, CartFooter, CartHeader, CheckoutButton, CloseButton, EmptyMessage, ProductInfo, ProductItem, ProductName, ProductPrice, RemoveButton, TotalAmount } from "./ShoppingCartStyle";
+import { FaWindowClose } from "react-icons/fa";
 
 interface ShoppingCartProps {
     isOpen: boolean
@@ -45,6 +46,9 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({ isOpen, onClose }) =
         >
             <CartHeader>
                 <h2>Carrito</h2>
+                <CloseButton onClick={onClose}>
+                    <FaWindowClose />
+                </CloseButton>
             </CartHeader>
             <CartContent>
                 {products.length === 0 ? (

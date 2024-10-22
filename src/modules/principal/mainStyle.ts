@@ -58,7 +58,7 @@ export const ImageCard = styled(motion.div)`
   transition: all 0.3s ease;
 
   &:hover {
-    filter: sepia(1.2);
+    filter: blur(1.2);
   }
 `;
 

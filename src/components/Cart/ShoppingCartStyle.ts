@@ -24,14 +24,15 @@ export const CartHeader = styled.div`
   background: linear-gradient(45deg, #ff0000, #ff7f7f);
   padding: 20px;
   color: white;
-  text-align: center;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   h2 {
     margin: 0;
     font-size: 1.5rem;
   }
 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     padding: 15px;
     h2 {
       font-size: 1.2rem;
@@ -158,4 +159,20 @@ width: 100vw;
 height: 100vh;
 background: rgba(0, 0, 0, 0.5);
 z-index: 999; /* Debe estar detrás del carrito */
+`;
+
+export const CloseButton = styled.button`
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  &:hover {
+    color: #ccc;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
