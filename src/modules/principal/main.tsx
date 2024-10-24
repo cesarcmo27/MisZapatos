@@ -7,8 +7,8 @@ export const MainComponent = () => {
   return (
     <>
       <HeroContainer>
-        <Logo>cd</Logo>
-        <Subtitle>CALZADO DEPORTIVO</Subtitle>
+        <Logo>Ysi</Logo>
+        <Subtitle>ESTILO QUE TE LLEVA </Subtitle>
         <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
           COMPRAR AHORA
         </Button>
